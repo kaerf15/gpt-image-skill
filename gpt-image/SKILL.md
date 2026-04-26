@@ -51,8 +51,6 @@ Finalize：`n=1, high, 精确尺寸`——基于选定方向精调。
 
 ## 工作流
 
-**强制 NATIVE 模式。** 本 skill 不走完整 Algorithm 流程，按秩直接执行。
-
 **生成**：理解需求 → 锚定事实（如需）→ 写 prompt → Explore → 用户确认 → Finalize
 
 **编辑**：拿到图片 → 明确编辑指令 → Edit → 效果 OK 直接交 / 不对再调指令
