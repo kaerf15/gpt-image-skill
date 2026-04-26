@@ -6,6 +6,20 @@ AI 作图 + 图片编辑 Skill，基于 GPT-Image-2（via 302.AI）。
 
 ### 1. 配置环境变量
 
+**永久配置（推荐）**：
+
+```bash
+# zsh（macOS 默认）
+echo 'export AI_302AI_API_KEY="sk-your-key-here"' >> ~/.zshrc
+source ~/.zshrc
+
+# bash
+echo 'export AI_302AI_API_KEY="sk-your-key-here"' >> ~/.bash_profile
+source ~/.bash_profile
+```
+
+**临时配置（仅当前终端会话有效）**：
+
 ```bash
 export AI_302AI_API_KEY="sk-your-key-here"
 ```
