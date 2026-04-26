@@ -1,6 +1,8 @@
 ---
 name: gpt-image
-description: "AI 作图 + 图片编辑。触发词：画图、编辑图片、generate image、edit image。"
+description: "AI 作图 + 图片编辑。生成插画、海报、产品图、icon、概念图；编辑图片改背景、换颜色、调风格、局部重绘。触发词：画图、编辑图片、generate image、edit image、做海报、生成 icon、换背景、改风格、产品氛围图。"
+version: "1.0.0"
+user_invocable: true
 ---
 
 # GPT Image
@@ -32,7 +34,7 @@ AI 默认产出 = 训练语料的统计平均 = 谁都不是。
 
 给模型一个钉子（参考艺术家 / HEX / 光线 / 材质），它就能挂住风格。
 
-反 slop：默认不用紫渐变 / emoji / 圆角+左border / 纯色剪影 / uniform soft light。
+反 slop：禁用紫渐变 / emoji / 圆角+左 border / 纯色剪影 / uniform soft light。出现即 slop，回退 Explore。
 
 一个视觉焦点做到 120%，其他自然——这是品味的来源。
 
@@ -48,6 +50,8 @@ Finalize：`n=1, high, 精确尺寸`——基于选定方向精调。
 不是 workflow 教条：效果 OK 就直接给用户看。
 
 ## 工作流
+
+**强制 NATIVE 模式。** 本 skill 不走完整 Algorithm 流程，按秩直接执行。
 
 **生成**：理解需求 → 锚定事实（如需）→ 写 prompt → Explore → 用户确认 → Finalize
 
@@ -73,7 +77,17 @@ python scripts/generate_image.py --prompt "..." --size auto
 python scripts/edit_image.py --image photo.png --prompt "Change background to blue"
 ```
 
-参数默认值：size=auto, n=1, quality=auto, background=auto, output-dir=`./output/`。Bash timeout：`300000`。
+| 参数 | 默认值 | 说明 |
+|------|--------|------|
+| `--size` | auto | 输出尺寸 |
+| `--n` | 1 | 生成数量 |
+| `--quality` | auto | 质量：auto / high / medium / low |
+| `--background` | auto | 背景：auto / transparent / opaque |
+| `--output-format` | png | 格式：png / jpeg / webp |
+| `--output-dir` | `./output/` | 输出目录，基于当前工作目录 |
+| `--output-name` | 时间戳 | 文件名前缀 |
+
+Bash timeout：`300000`。
 
 尺寸映射、调整优先级、素材专线 → `references/`
 
