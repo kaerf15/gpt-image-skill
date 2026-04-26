@@ -15,7 +15,7 @@
 icon / 贴纸 / UI 元素 / 需要叠加的图：
 
 ```bash
-python3 "${CLAUDE_SKILL_DIR}/scripts/generate_image.py" \
+python3 scripts/generate_image.py \
   --prompt "[七层导演脚本，固定风格锚点]" \
   --n 5 --quality medium \
   --background transparent --output-format png \
