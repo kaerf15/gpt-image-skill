@@ -279,8 +279,21 @@ def main():
         print("Error: Failed to get response from GPT-Image API", file=sys.stderr)
         sys.exit(1)
 
-    # Prepare output directory
-    output_dir = os.path.abspath(args.output_dir)
+    # Prepare output directory — guard against writing into skill directory
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    skill_dir = os.path.dirname(script_dir)
+    cwd = os.getcwd()
+    try:
+        in_skill = os.path.commonpath([os.path.abspath(cwd), skill_dir]) == skill_dir
+    except ValueError:
+        in_skill = False
+
+    output_dir = args.output_dir
+    if in_skill and not os.path.isabs(output_dir):
+        output_dir = os.path.expanduser("~/Downloads/gpt-image-output")
+        print(f"Warning: Running inside skill directory. Redirecting output to {output_dir}", file=sys.stderr)
+
+    output_dir = os.path.abspath(output_dir)
     os.makedirs(output_dir, exist_ok=True)
 
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
