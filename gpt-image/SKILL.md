@@ -65,7 +65,7 @@ Finalize：`n=1, high, 精确尺寸`——基于选定方向精调。
 
 ## 调用
 
-脚本在 skill 目录的 `scripts/` 下。Agent 根据自己安装位置调用，不要切换目录。输出默认到当前目录的 `./output/` 下，可通过 `--output-dir` 覆盖。
+脚本在 skill 目录的 `scripts/` 下。Agent 根据自己安装位置调用，不要切换目录。输出默认到当前目录的 `./output/` 下，可通过 `--output-dir` 覆盖。**禁止将图片输出到 skill 目录内**——如果当前目录恰好在 skill 安装路径下，必须通过 `--output-dir` 指定到其他位置。
 
 ```bash
 # 生成
