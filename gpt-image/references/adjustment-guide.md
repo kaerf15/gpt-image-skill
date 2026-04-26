@@ -14,6 +14,8 @@
 
 icon / 贴纸 / UI 元素 / 需要叠加的图：
 
+> 输出目录基于**当前工作目录**，Agent 执行时保持 cwd 为用户的项目目录。
+
 ```bash
 python3 scripts/generate_image.py \
   --prompt "[七层导演脚本，固定风格锚点]" \
