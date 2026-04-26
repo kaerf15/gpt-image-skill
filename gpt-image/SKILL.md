@@ -63,15 +63,19 @@ Finalize：`n=1, high, 精确尺寸`——基于选定方向精调。
 
 ## 调用
 
-```bash
-# 生成
-python scripts/generate_image.py --prompt "..." --size auto
+脚本位于本 skill 目录的 `scripts/` 下。Agent 调用时应使用**绝对路径**，并保持**当前工作目录不变**（即用户的项目目录）。
 
-# 编辑
-python scripts/edit_image.py --image photo.png --prompt "Change background to blue"
+**生成**
+```bash
+python <skill-dir>/scripts/generate_image.py --prompt "..." --size auto
 ```
 
-参数默认值：size=auto, n=1, quality=auto, background=auto。Bash timeout：`300000`。
+**编辑**
+```bash
+python <skill-dir>/scripts/edit_image.py --image <path> --prompt "..."
+```
+
+参数默认值：size=auto, n=1, quality=auto, background=auto, output-dir=`./output/`。Bash timeout：`300000`。
 
 尺寸映射、调整优先级、素材专线 → `references/`
 
